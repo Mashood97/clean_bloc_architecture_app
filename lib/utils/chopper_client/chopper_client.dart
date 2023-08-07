@@ -1,4 +1,5 @@
 import 'package:chopper/chopper.dart';
+import 'package:clean_bloc_architecture/features/authentication/data/remote/data_sources/auth_chopper_service.dart';
 
 import '../constant/api_routes.dart';
 import 'converter/json_serializable_converter.dart';
@@ -27,7 +28,7 @@ class ChopperClientInstance {
         baseUrl: Uri.parse(ApiRoutes.kBaseUrl),
         services: [
           // Create and pass an instance of the generated service to the client
-
+          AuthenticationChopperService.create(),
         ],
         converter: converter,
         errorConverter: converter,
