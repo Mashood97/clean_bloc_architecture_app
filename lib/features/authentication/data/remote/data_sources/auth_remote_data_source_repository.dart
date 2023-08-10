@@ -77,7 +77,9 @@ class IAuthenticationRemoteDataSourceRepositoryImplementation
 
       return authToken;
     } else {
-      throw ResponseError(errorStatus: response.error.toString());
+      throw ResponseError(
+        errorStatus: response.bodyString.decodedString["error"],
+      );
     }
   }
 }

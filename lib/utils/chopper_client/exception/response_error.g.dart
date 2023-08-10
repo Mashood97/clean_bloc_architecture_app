@@ -8,10 +8,10 @@ part of 'response_error.dart';
 
 ResponseError _$ResponseErrorFromJson(Map<String, dynamic> json) =>
     ResponseError(
-      errorStatus: json['message'] as String,
+      errorStatus: json['error'] as String,
     );
 
 Map<String, dynamic> _$ResponseErrorToJson(ResponseError instance) =>
     <String, dynamic>{
-      'message': instance.errorStatus,
+      'error': instance.errorStatus,
     };

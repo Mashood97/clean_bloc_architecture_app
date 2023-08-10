@@ -4,7 +4,7 @@ part 'response_error.g.dart';
 
 @JsonSerializable()
 class ResponseError {
-  @JsonKey(name: "message")
+  @JsonKey(name: "error")
   final String errorStatus;
 
   ResponseError({

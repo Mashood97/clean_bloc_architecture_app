@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:clean_bloc_architecture/core/error/error_handling.dart';
 import 'package:clean_bloc_architecture/features/authentication/domain/use_cases/logout_usecase.dart';
@@ -31,15 +33,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
             userEmail: userEmail,
             userName: userName,
             userPassword: userPassword);
+    await Future<void>.delayed(const Duration(milliseconds: 20));
+
     response.fold(
-      (error) => emit(
-        AuthenticationError(
-          errorMsg: error.errorStatus,
-        ),
-      ),
-      (successBody) => emit(
-        AuthenticationLoaded(authToken: successBody),
-      ),
-    );
+        (error) {
+          log(error.errorStatus);
+          return emit(
+              AuthenticationError(
+                error.errorStatus,
+              ),
+            );}, (successBody) {
+          log(successBody);
+      return emit(
+        AuthenticationLoaded(successBody),
+      );
+    });
   }
 }

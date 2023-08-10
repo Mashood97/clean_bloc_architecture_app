@@ -45,6 +45,7 @@ dependencies:
   freezed:
   freezed_annotation:
   connectivity_plus: ^4.0.2
+  get_it:
 
 dev_dependencies:
   flutter_test:
